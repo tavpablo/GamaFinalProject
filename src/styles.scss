@@ -1,1 +1,180 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap';
+
+body{
+    background-color: #8C52E5;
+    cursor: default;
+}
+
+a:hover
+{
+    text-decoration: none;
+}
+
+.component-block
+{
+    width: 455px;
+    height: 422px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: #FBFBFB;
+    border-radius: 8px;
+
+    padding: 20px;
+
+    @media (max-width:767px) {
+        display: block;
+        position: relative;
+        top: 0px;
+        transform: translate(-50%, 40%);
+    }
+
+    &.strict{
+        width: 350px;
+        height: 540px;
+        @media (min-width:767px) {
+            right: 0%;
+            left: auto;
+        }
+        @media (max-width:767px) {
+            transform: translate(-50%, 65%);
+        }
+    }
+
+    .title {
+        font-weight: bolder;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .center
+    {
+        width: 455px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .btn-continue {
+        width: 360.79px;
+        height: 42.78px;
+        background: #68DE5A;
+        border-radius: 20px;
+        border: 0px;
+
+        .arrow {
+            position: relative;
+            top: -8px;
+            float: right;
+            margin-right: 15px;
+        }
+    }
+}
+
+input
+{
+    width: 300px;
+    display: block;
+    color: #444;
+    border: none;
+    background-color: #fff;
+    border-bottom: 1px solid #5f5f5f;
+    margin: 30px auto;
+    padding: 5px 10px;
+    outline: none;
+}
+
+p
+{
+    text-align:center;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease; 
+    text-indent: -100%;
+    opacity: 1;
+}
+
+.purple-link
+{
+    color: #8C52E5;
+    display: block;
+    text-align: center;
+    margin: 5px;
+
+    &.first-child {
+        margin-top:50px;
+    }
+
+    &:hover {
+        color: #8C52E5;
+    }
+}
+
+.enter-buttom {
+    position: absolute;
+    width: 261px;
+    height: 42px;
+    left: 180px;
+    top: 549px;
+
+    cursor: pointer;
+    background: #FFFFFF;
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    @media (max-width:767px) {
+        top: 400px;
+        left: 90px;
+    }
+
+    .text-buttom {
+        position: relative;
+        top: 10px;
+        left: 20px;
+        
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+
+        color: #8C52E5;
+    }
+
+    .arrow {
+        position: relative;
+        top: -8px;
+        float: right;
+        margin-right: 15px;
+    }
+}
+
+.enter-buttom.green
+{
+    width: 80%;
+    height: 42px;
+
+    position: relative;
+    top: 10px;
+    bottom: 10px;
+    left: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    cursor: pointer;
+    background: #68DE5A;
+    border-radius: 20px;
+
+    .text-buttom
+    {
+        color: #FFF;
+    }
+}
