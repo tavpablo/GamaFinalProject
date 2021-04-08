@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize, take } from 'rxjs/operators';
-import { Usuario } from 'src/app/models/banco.usuario.model';
-import { BaseComponent } from 'src/app/utils/base.component';
-import { ConfirmedValidator } from 'src/app/utils/confirmed.validators';
-import { CpfCnpjValidator } from 'src/app/utils/cpfcnpj.validators';
+import { Usuario } from 'src/app/shared/models/banco.usuario.model';
+import { BaseComponent } from 'src/app/shared/base/base.component';
+import { ConfirmedValidator } from 'src/app/shared/base/confirmed.validators';
+import { CpfCnpjValidator } from 'src/app/shared/base/cpfcnpj.validators';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +40,11 @@ export class HomeComponent extends BaseComponent {
           finalize(() => { this.loading = false; })
         )
         .subscribe(_response => {
-          this.router.navigate(['/dash'])
+
+          localStorage.setItem('GamaMessage', 'Usuário cadastrado com sucesso!');
+          const dialog = this._dialog.open(DialogComponent);
+          dialog.afterClosed().subscribe(() => this.router.navigate(['/login']));
+
         }, error => {
           this._snackBar.open(error.error.error, '', {
             duration: 5000

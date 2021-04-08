@@ -1,7 +1,7 @@
 import { Conta } from "./banco.conta.model";
 import { Usuario } from "./banco.usuario.model";
 
-class ContaBancaria {
+class ContaUsuario {
     constructor(
       public dataInicio: Date,
       public dataFim: Date,
@@ -12,4 +12,4 @@ class ContaBancaria {
     ){}
   }
   
-  export {ContaBancaria}
+  export {ContaUsuario}

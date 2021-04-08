@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Login } from '../../models/login.model';
+import { Login } from '../../shared/models/login.model';
 import { finalize, take } from 'rxjs/operators';
-import { BaseComponent } from 'src/app/utils/base.component';
+import { BaseComponent } from 'src/app/shared/base/base.component';
 
 @Component({
   selector: 'app-login',
@@ -36,8 +36,8 @@ export class LoginComponent extends BaseComponent {
           finalize(() => { this.loading = false; })
         )
         .subscribe(response => {
-          console.log(response.contaCredito);
-          //this.router.navigate(['/dash'])
+          this.setLocalStorage(response);
+          this.router.navigate(['/dash'])
         }, error => {
           this._snackBar.open('Usuário ou senha inválidos!', '', {
             duration: 5000

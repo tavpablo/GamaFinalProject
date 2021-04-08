@@ -195,6 +195,10 @@ p
     right: 50%; /* or: left: 50%; */
 }
 
+.mat-dialog-container {
+    background: #FFF;
+}
+
 .ng-touched.ng-invalid
 {
     border-color: red;
