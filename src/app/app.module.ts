@@ -12,10 +12,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { RecoverypassComponent } from './pages/recoverypass/recoverypass.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { DashComponent } from './pages/dash/dash.component';
-import { LoginService } from './pages/login/login.service';
+import { GamaBankService } from './services/gama.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxMaskModule } from 'ngx-mask';
 
-export const GAMA_API = 'https://accenture-java-desafio.herokuapp.com';
+export const GAMA_API = environment.GAMA_API;
 
 @NgModule({
   declarations: [
@@ -32,10 +36,12 @@ export const GAMA_API = 'https://accenture-java-desafio.herokuapp.com';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    NgxMaskModule.forRoot(),
   ],
-  providers: [HttpClient, LoginService],
+  providers: [HttpClient, GamaBankService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

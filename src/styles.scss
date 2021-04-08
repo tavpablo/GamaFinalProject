@@ -127,6 +127,38 @@ p
 
     text-decoration: none;
 
+    &.green
+    {
+        background: #68DE5A;
+    }
+
+    &.gray
+    {
+        background: #C0C0C0;
+    }
+
+    &.container
+    {
+        width: 80%;
+        height: 42px;
+    
+        position: relative;
+        top: 10px;
+        bottom: 10px;
+        left: 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    
+        cursor: pointer;
+        border-radius: 20px;
+    
+        .text-buttom
+        {
+            color: #FFF;
+        }
+    }
+
     @media (max-width:767px) {
         top: 400px;
         left: 90px;
@@ -156,25 +188,17 @@ p
     }
 }
 
-.enter-buttom.green
-{
-    width: 80%;
-    height: 42px;
-
-    position: relative;
-    top: 10px;
-    bottom: 10px;
-    left: 0px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-
-    cursor: pointer;
-    background: #68DE5A;
-    border-radius: 20px;
-
-    .text-buttom
-    {
-        color: #FFF;
-    }
+.spinner {
+    position: fixed;
+    z-index: 1031; /* High z-index so it is on top of the page */
+    top: 50%;
+    right: 50%; /* or: left: 50%; */
 }
+
+.ng-touched.ng-invalid
+{
+    border-color: red;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

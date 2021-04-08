@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  GAMA_API: 'https://accenture-java-desafio.herokuapp.com',
 };

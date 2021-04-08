@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { BaseComponent } from 'src/app/utils/base.component';
 
 @Component({
   selector: 'app-recoverypass',
   templateUrl: './recoverypass.component.html',
   styleUrls: ['./recoverypass.component.scss']
 })
-export class RecoverypassComponent implements OnInit {
 
-  constructor() { }
+export class RecoverypassComponent extends BaseComponent {
+
+  senhaForm!: FormGroup; 
 
   ngOnInit(): void {
   }

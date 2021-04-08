@@ -1,31 +1,53 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Login } from './login.model';
-import { LoginService } from './login.service';
+import { Login } from '../../models/login.model';
+import { finalize, take } from 'rxjs/operators';
+import { BaseComponent } from 'src/app/utils/base.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
 
-  loginForm = new FormGroup({
-    usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    senha: new FormControl('', [Validators.required, Validators.minLength(5)])
-  });
+export class LoginComponent extends BaseComponent {
 
-  constructor(public loginService: LoginService, 
-    private router: Router) { }
+  loginForm!: FormGroup;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  autenticar(login:Login)
-  {
-    this.loginService.autenticar(login)
-    .subscribe(() => {
-      this.router.navigate(['/dash'])
+    this.loading = false;
+
+    this.loginForm = new FormGroup({
+      usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      senha: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
+
+  }
+
+  login(login:Login)
+  {
+    if (!this.loginForm.invalid)
+    {
+      this.loading = true;
+      this.gamaService.login(login)
+        .pipe(
+          take(1),
+          finalize(() => { this.loading = false; })
+        )
+        .subscribe(response => {
+          console.log(response.contaCredito);
+          //this.router.navigate(['/dash'])
+        }, error => {
+          this._snackBar.open('Usuário ou senha inválidos!', '', {
+            duration: 5000
+          });
+        });
+    } else 
+    {
+      this._snackBar.open('Informe um usuário e senha válidos!', '', {
+        duration: 1000
+      });
+    }
   }
 }
