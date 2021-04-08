@@ -4,10 +4,11 @@ import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
 
 import { Login } from '../models/login.model'
-import { GAMA_API } from 'src/app/app.module';
 import { ContaBancaria } from 'src/app/models/banco.contabancaria.model';
 import { Usuario } from '../models/banco.usuario.model';
+import { environment } from 'src/environments/environment';
 
+export const GAMA_API = environment.GAMA_API;
 
 @Injectable()
 export class GamaBankService {

@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { finalize, take } from 'rxjs/operators';
 import { Usuario } from 'src/app/models/banco.usuario.model';
-import { GamaBankService } from 'src/app/services/gama.service';
 import { BaseComponent } from 'src/app/utils/base.component';
 import { ConfirmedValidator } from 'src/app/utils/confirmed.validators';
 import { CpfCnpjValidator } from 'src/app/utils/cpfcnpj.validators';
@@ -19,23 +16,17 @@ export class HomeComponent extends BaseComponent {
 
   cadastroForm!: FormGroup; 
 
-  constructor(protected gamaService: GamaBankService, 
-    protected router: Router,
-    protected _snackBar: MatSnackBar,
-    private fb: FormBuilder) { 
+  ngOnInit(): void {
 
-      super(gamaService, router, _snackBar);
-      this.cadastroForm = fb.group({
-        cpf: new FormControl('', [Validators.required, Validators.pattern(/^(\d{3}){3}\d{2}$/), CpfCnpjValidator.validate]),
-        login: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        nome: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        senha: new FormControl('', [Validators.required, Validators.minLength(5)]),
-        senhaConfirmacao: new FormControl('', [Validators.required, Validators.minLength(5)])
-      }, { validators: ConfirmedValidator('senha', 'senhaConfirmacao') });
+    this.cadastroForm = new FormBuilder().group({
+      cpf: new FormControl('', [Validators.required, Validators.pattern(/^(\d{3}){3}\d{2}$/), CpfCnpjValidator.validate]),
+      login: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      nome: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      senha: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      senhaConfirmacao: new FormControl('', [Validators.required, Validators.minLength(5)])
+    }, { validators: ConfirmedValidator('senha', 'senhaConfirmacao') });
 
   }
-
-  ngOnInit(): void {}
 
   cadastrar(usuario: Usuario)
   {

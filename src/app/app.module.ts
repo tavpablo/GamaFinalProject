@@ -14,12 +14,9 @@ import { ErrorComponent } from './pages/error/error.component';
 import { DashComponent } from './pages/dash/dash.component';
 import { GamaBankService } from './services/gama.service';
 import { HttpClient, HttpClientModule, HttpHandler } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxMaskModule } from 'ngx-mask';
-
-export const GAMA_API = environment.GAMA_API;
 
 @NgModule({
   declarations: [

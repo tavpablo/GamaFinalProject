@@ -30,8 +30,6 @@ export class CpfCnpjValidator implements Validator {
 
         const cpfCnpj = c.value.replace(/\D/g, '');
 
-        console.log(cpfCnpj);
-
         // Verifica o tamanho da string.
         if ([CpfCnpjValidator.cpfLength, CpfCnpjValidator.cnpjLength].indexOf(cpfCnpj.length) < 0) {
             return { length: true };
