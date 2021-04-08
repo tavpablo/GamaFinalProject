@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GamaBankService } from '../services/gama.service';
 
@@ -9,12 +9,14 @@ import { GamaBankService } from '../services/gama.service';
 
 export class ControleSessaoGuard implements CanActivate {
 
-  constructor(private gamaService: GamaBankService) {}
+  constructor(private gamaService: GamaBankService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.gamaService.estaLogado();
+    const estaLogado = this.gamaService.estaLogado();
+    if (!estaLogado) this.router.navigate(['login']);
+    return estaLogado;
   }
   
 }

@@ -15,8 +15,6 @@ export class DashComponent extends BaseComponent {
 
     this.sessao = this.getSessao();
 
-    if (!this.sessao) this.router.navigate(['/error']);
-
   }
 
 }
