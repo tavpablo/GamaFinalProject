@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
-import { ContaUsuario } from "../models/banco.contabancaria.model";
+import { ContaUsuario } from "../models/banco.contausuario.model";
+import { Sessao } from "../models/sessao.model";
 import { GamaBankService } from "../services/gama.service";
 
 @Component({
@@ -14,6 +15,8 @@ export class BaseComponent implements OnInit {
 
     public loading!: boolean;
 
+    public sessao!: Sessao; 
+
     constructor(protected gamaService: GamaBankService, 
         protected router: Router,
         protected _dialog: MatDialog,
@@ -22,10 +25,20 @@ export class BaseComponent implements OnInit {
     ngOnInit(): void {
     }
 
-    setLocalStorage(contaUsuario: ContaUsuario) {
-        localStorage.setItem('token', contaUsuario.token);
-        localStorage.setItem('usuario', contaUsuario.usuario.nome);
-        localStorage.setItem('cpf', contaUsuario.usuario.cpf);
+    getSessao(): Sessao {
+        return this.gamaService.getSessao();
+    }
+
+    setSessao(contaUsuario: ContaUsuario) {
+
+        this.gamaService.setSessao(contaUsuario);
+
+    }
+
+    estaLogado(): boolean {
+
+        return this.gamaService.estaLogado();
+
     }
 
 }

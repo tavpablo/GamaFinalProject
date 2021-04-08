@@ -36,8 +36,8 @@ export class LoginComponent extends BaseComponent {
           finalize(() => { this.loading = false; })
         )
         .subscribe(response => {
-          this.setLocalStorage(response);
-          this.router.navigate(['/dash'])
+          this.setSessao(response);
+          this.router.navigate(['/dash']);
         }, error => {
           this._snackBar.open('Usuário ou senha inválidos!', '', {
             duration: 5000
