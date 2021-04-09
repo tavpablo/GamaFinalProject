@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, Validators } from '@angular/forms';
 import { Login } from '../../shared/models/login.model';
 import { finalize, take } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/shared/base/base.component';
@@ -12,15 +12,15 @@ import { BaseComponent } from 'src/app/shared/base/base.component';
 
 export class LoginComponent extends BaseComponent {
 
-  loginForm!: FormGroup;
+  loginForm!: AbstractControl;
 
   ngOnInit(): void {
 
     this.loading = false;
 
-    this.loginForm = new FormGroup({
-      usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
-      senha: new FormControl('', [Validators.required, Validators.minLength(5)])
+    this.loginForm = this.fb.group({
+      usuario: [Validators.required, Validators.minLength(5)],
+      senha: [Validators.required, Validators.minLength(5)]
     });
 
   }

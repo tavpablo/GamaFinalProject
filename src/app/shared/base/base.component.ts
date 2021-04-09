@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder } from "@angular/forms";
 import { MatDialog } from "@angular/material/dialog";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
@@ -19,6 +20,7 @@ export class BaseComponent implements OnInit {
 
     constructor(protected gamaService: GamaBankService, 
         protected router: Router,
+        protected fb: FormBuilder,
         protected _dialog: MatDialog,
         protected _snackBar: MatSnackBar) { }
   
