@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../shared/models/login.model';
 import { finalize, take } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/shared/base/base.component';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -49,5 +50,10 @@ export class LoginComponent extends BaseComponent {
         duration: 1000
       });
     }
+  }
+
+  naoDisponivel() {
+    localStorage.setItem('GamaMessage', 'Funcionalidade em fase de implementação.');
+    const dialog = this._dialog.open(DialogComponent);
   }
 }

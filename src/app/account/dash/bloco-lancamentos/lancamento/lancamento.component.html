@@ -13,7 +13,7 @@
         </defs>
     </svg>
     <span class="descricao">{{ titulo }}</span>
-    <span class="data">{{ (data | date: 'short') }}</span>
+    <span class="data">{{ (data | date: '\'Dia\' d \'de\' MMM') }}</span>
     <span class="instituicao">{{ instituicao }}</span>
     <span class="valorLancamento">{{ valor | currency: 'BRL'}}</span>
 </div>
