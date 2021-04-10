@@ -21,6 +21,8 @@ export class HomeComponent extends BaseComponent {
 
     if (this.estaLogado()) this.router.navigate(['dash']);
 
+    this.loading = false;
+
     this.cadastroForm = this.fb.group({
       cpf: new FormControl('', [Validators.required, Validators.pattern(/^(\d{3}){3}\d{2}$/), CpfCnpjValidator.validate]),
       login: new FormControl('', [Validators.required, Validators.minLength(5)]),

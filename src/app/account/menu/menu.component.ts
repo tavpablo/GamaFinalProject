@@ -14,7 +14,7 @@ export class MenuComponent extends BaseComponent {
   }
 
   naoDisponivel() {
-    localStorage.setItem('GamaMessage', 'Funcionalidade em fase de implementação.');
+    localStorage.setItem('GamaMessage', 'Funcionalidade não implementada (obs.: apesar de citada no documento não está totalmente briefada, a mesma não está mockada no figma).');
     const dialog = this._dialog.open(DialogComponent);
   }
 

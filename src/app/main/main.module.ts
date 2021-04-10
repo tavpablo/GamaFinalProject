@@ -9,6 +9,7 @@ import { RecoverypassComponent } from './recoverypass/recoverypass.component';
 
 import { MainRoutingModule } from './main-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MainRoutingModule,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
   ]
 })
 

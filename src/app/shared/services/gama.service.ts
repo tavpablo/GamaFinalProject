@@ -35,6 +35,13 @@ export class GamaBankService {
     }});
   }
 
+  alterarSenha(cpf: string, senha: string): Observable<any> {
+    return this.http.post<any>(`${GAMA_API}/altera-senha`, { params: {
+      cpf: cpf,
+      senha: senha
+    }});
+  }
+
   getToken() 
   {
     return this.estaLogado() ? this.getSessao().token : '';
