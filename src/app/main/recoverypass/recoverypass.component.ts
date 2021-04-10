@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { BaseComponent } from 'src/app/shared/base/base.component';
 
 @Component({
@@ -10,7 +10,7 @@ import { BaseComponent } from 'src/app/shared/base/base.component';
 
 export class RecoverypassComponent extends BaseComponent {
 
-  senhaForm!: AbstractControl; 
+  senhaForm!: FormGroup; 
 
   ngOnInit(): void {
   }

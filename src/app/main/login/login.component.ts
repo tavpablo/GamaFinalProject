@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AbstractControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from '../../shared/models/login.model';
 import { finalize, take } from 'rxjs/operators';
 import { BaseComponent } from 'src/app/shared/base/base.component';
@@ -12,15 +12,15 @@ import { BaseComponent } from 'src/app/shared/base/base.component';
 
 export class LoginComponent extends BaseComponent {
 
-  loginForm!: AbstractControl;
+  loginForm!: FormGroup;
 
   ngOnInit(): void {
 
     this.loading = false;
 
     this.loginForm = this.fb.group({
-      usuario: [Validators.required, Validators.minLength(5)],
-      senha: [Validators.required, Validators.minLength(5)]
+      usuario: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      senha: new FormControl('', [Validators.required, Validators.minLength(5)])
     });
 
   }
@@ -37,7 +37,7 @@ export class LoginComponent extends BaseComponent {
         )
         .subscribe(response => {
           this.setSessao(response);
-          this.router.navigate(['/dash']);
+          this.router.navigate(['/account']);
         }, error => {
           this._snackBar.open('Usuário ou senha inválidos!', '', {
             duration: 5000

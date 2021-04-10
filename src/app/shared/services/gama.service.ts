@@ -4,10 +4,11 @@ import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
 
 import { Login } from '../models/login.model'
-import { ContaUsuario } from 'src/app/shared/models/banco.contausuario.model';
-import { Usuario } from '../models/banco.usuario.model';
+import { ContaUsuario } from 'src/app/shared/models/banco-contausuario.model';
+import { Usuario } from '../models/usuario.model';
 import { environment } from 'src/environments/environment';
 import { Sessao } from '../models/sessao.model';
+import { Dashboard } from '../models/banco-dashboard.model';
 
 export const GAMA_API = environment.GAMA_API;
 
@@ -26,6 +27,19 @@ export class GamaBankService {
     return this.http.post<any>(`${GAMA_API}/usuarios`, usuario);
   }
 
+  getDashboard(dataInicio: string, dataFim: string, usuario: string): Observable<Dashboard> {
+    return this.http.get<Dashboard>(`${GAMA_API}/dashboard`, { params: {
+      login: usuario,
+      inicio: dataInicio,
+      fim: dataFim
+    }});
+  }
+
+  getToken() 
+  {
+    return this.estaLogado() ? this.getSessao().token : '';
+  }
+
   getSessao(): Sessao {
       if (!this.sessao){
           const s = localStorage.getItem('gs');
@@ -36,14 +50,24 @@ export class GamaBankService {
 
   setSessao(contaUsuario: ContaUsuario) {
 
-      this.sessao = new Sessao(contaUsuario.token, contaUsuario.usuario.nome, contaUsuario.usuario.cpf);
+      this.sessao = new Sessao(contaUsuario.token, 
+        contaUsuario.usuario.login, 
+        contaUsuario.usuario.nome, 
+        contaUsuario.usuario.cpf);
       localStorage.setItem('gs', JSON.stringify(this.sessao));
+
+  }
+
+  desconectar() {
+
+    localStorage.clear();
 
   }
 
   estaLogado(): boolean {
 
-      if (this.getSessao()) return true;
+      const s = localStorage.getItem('gs');     
+      if (s) return true;
       else return false;
       
   }

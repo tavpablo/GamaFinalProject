@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AbstractControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize, take } from 'rxjs/operators';
-import { Usuario } from 'src/app/shared/models/banco.usuario.model';
+import { Usuario } from 'src/app/shared/models/usuario.model';
 import { BaseComponent } from 'src/app/shared/base/base.component';
 import { ConfirmedValidator } from 'src/app/shared/base/confirmed.validators';
 import { CpfCnpjValidator } from 'src/app/shared/base/cpfcnpj.validators';
@@ -15,18 +15,18 @@ import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 export class HomeComponent extends BaseComponent {
 
-  cadastroForm!: AbstractControl; 
+  cadastroForm!: FormGroup; 
 
   ngOnInit(): void {
 
     if (this.estaLogado()) this.router.navigate(['dash']);
 
     this.cadastroForm = this.fb.group({
-      cpf: [Validators.required, Validators.pattern(/^(\d{3}){3}\d{2}$/), CpfCnpjValidator.validate],
-      login: [Validators.required, Validators.minLength(5)],
-      nome: [Validators.required, Validators.minLength(5)],
-      senha: [Validators.required, Validators.minLength(5)],
-      senhaConfirmacao: [Validators.required, Validators.minLength(5)]
+      cpf: new FormControl('', [Validators.required, Validators.pattern(/^(\d{3}){3}\d{2}$/), CpfCnpjValidator.validate]),
+      login: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      nome: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      senha: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      senhaConfirmacao: new FormControl('', [Validators.required, Validators.minLength(5)])
     }, { validators: ConfirmedValidator('senha', 'senhaConfirmacao') });
 
   }

@@ -204,5 +204,159 @@ p
     border-color: red;
 }
 
+.dash-menu
+{
+    position: absolute;
+    width: 151px;
+    min-height: 900px;
+    left: 0px;
+    top: 0px;
+    text-align: center;
+    padding-top: 10px;
+
+    background: #63dc3f;
+
+    .btn-menu {
+        width: 91px;
+        height: 91px;
+        
+        display: block;
+        margin: 20px auto;
+
+        background: #8C52E5;
+        border-radius: 5px;
+
+        &.red {
+            background: rgb(212, 59, 59);
+        }
+
+        span
+        {
+            display: block;
+            position: relative;
+            bottom: -30px;
+            color: white;
+        }
+
+        svg {
+            position: relative;
+            top: 10px;
+            left: -20px;
+        }
+    }
+}
+
+.dash-hello
+{
+    position: absolute;
+    width: 280px;
+    height: 26px;
+    left: 243px;
+    top: 71px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+.dash
+{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #9B9B9B;
+
+    svg
+    {
+        margin: 20px;
+    }
+}
+
+.dash-card {
+    width: 407.8px;
+    height: 255.05px;
+    display: inline-block;
+    position: relative;
+    left: 247px;
+    top: 150px;
+    margin-right: 93px;
+
+    background: #FBFBFB;
+    border-radius: 8px;
+
+    .subtitle
+    {
+        display:block;
+        margin: 13px 0 0 23px;
+    }
+
+    .moneyValue
+    {
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 35px;
+        margin-left: 23px;
+
+        &.black {
+            color: #010101;
+        }
+
+        &.green {
+            color: #68DE5A;
+        }
+
+        &.blue {
+            color: #1783E7;
+        }
+    }
+}
+
+.dash-block {
+    position: relative;
+    width: 907.55px;
+    height: 396px;
+    left: 247.45px;
+    top: 220px;
+
+    background: #FBFBFB;
+    border-radius: 8px;
+
+    .lancamento {
+        display: block;
+
+        span {
+            display: block;
+        }
+
+        .descricao
+        {
+            font-weight: bold;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .valorLancamento
+        {
+            font-weight: 500;
+            font-size: 20px;
+            color: #000000;
+        }
+
+        .data
+        {
+            float: right;
+            margin-right: 215px;
+            font-size: 14px;
+        }
+    }
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

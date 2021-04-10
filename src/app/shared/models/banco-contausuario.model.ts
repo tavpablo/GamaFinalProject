@@ -1,5 +1,5 @@
-import { Conta } from "./banco.conta.model";
-import { Usuario } from "./banco.usuario.model";
+import { Conta } from "./conta.model";
+import { Usuario } from "./usuario.model";
 
 class ContaUsuario {
     constructor(
